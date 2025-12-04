@@ -7,26 +7,17 @@ if(isset($_POST['usuario']) && isset($_POST['senha'])){
     $usuario = $conecta->real_escape_string($_POST['usuario']);
     $senha   = $_POST['senha']; // senha digitada
 
-    // Seleciona o usuário do banco
-    $sql = "SELECT * FROM USUARIOS WHERE usuario = '$usuario'";
-    $result = $conecta->query($sql);
+    // --- BYPASS DE LOGIN PARA TESTES (Substitua o bloco de autenticação por isto) ---
 
-    if($result->num_rows == 1){
-        $row = $result->fetch_assoc();
+// Define as variáveis de sessão com os dados que foram submetidos
+$_SESSION['usuario'] = $usuario;
+$_SESSION['nome'] = "USUARIO DE TESTE"; // Nome fixo, ou defina como $usuario
 
-        // Verifica senha
-        if(password_verify($senha, $row['senha_hash'])){
-            $_SESSION['usuario'] = $row['usuario'];
-            $_SESSION['nome'] = $row['nome'];
+// Redireciona imediatamente para a tela inicial
+header("Location: ../FrontEnd/index.html"); // dashboard
+exit;
 
-            header("Location: ../FrontEnd/index.html"); // dashboard
-            exit;
-        } else {
-            $erro = "Senha incorreta!";
-        }
-    } else {
-        $erro = "Usuário não encontrado!";
-    }
+// --- FIM DO BYPASS DE LOGIN ---
 }
 ?>
 
