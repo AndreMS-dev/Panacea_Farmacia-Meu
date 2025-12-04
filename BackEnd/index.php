@@ -19,7 +19,7 @@ if(isset($_POST['usuario']) && isset($_POST['senha'])){
             $_SESSION['usuario'] = $row['usuario'];
             $_SESSION['nome'] = $row['nome'];
 
-            header("Location: painel/home.php"); // dashboard
+            header("Location: ../FrontEnd/index.html"); // dashboard
             exit;
         } else {
             $erro = "Senha incorreta!";
