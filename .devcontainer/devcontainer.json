@@ -1,0 +1,11 @@
+{
+  "name": "Panacea Farmacia",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/FrontEnd",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ritwickdey.LiveServer"
+      ]
+    }
+  }
+}
